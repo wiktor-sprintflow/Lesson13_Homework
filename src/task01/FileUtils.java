@@ -9,9 +9,9 @@ class FileUtils {
         int employeesNumber = calculateEmployeesInFile(file);
         Employee[] company = new Employee[employeesNumber];
 
-        try {
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+        try (FileReader fileReader = new FileReader(file);
+             BufferedReader bufferedReader = new BufferedReader(fileReader)
+        ) {
             String line;
             int index = 0;
             while ((line = bufferedReader.readLine()) != null) {
