@@ -4,14 +4,14 @@ import java.io.*;
 
 class FileUtils {
 
-    Employee[] getEmployeesFromFile(String employeesFile) {
+    static Employee[] getEmployeesFromFile(String employeesFile) {
         File file = new File(employeesFile);
         int employeesNumber = calculateEmployeesInFile(file);
         Employee[] company = new Employee[employeesNumber];
 
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)
-        ) {
+        try {
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             int index = 0;
             while ((line = bufferedReader.readLine()) != null) {
@@ -27,7 +27,7 @@ class FileUtils {
         return company;
     }
 
-    private int calculateEmployeesInFile (File file){
+    private static int calculateEmployeesInFile(File file) {
         int employeesNumber = 0;
         try (FileReader fileReader = new FileReader(file);
              BufferedReader bufferedReader = new BufferedReader(fileReader)
@@ -43,11 +43,11 @@ class FileUtils {
         return employeesNumber;
     }
 
-    void setCompanyStatisticsToFile(Employee[] company, String statisticsFile) {
+    static void setCompanyStatisticsToFile(Employee[] company, String statisticsFile) {
         File file = new File(statisticsFile);
         try (FileWriter fileWriter = new FileWriter(file);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)
-        ){
+        ) {
             bufferedWriter.write("Średnia wypłata: " + CompanyStatistics.calculateAverageSalary(company));
             bufferedWriter.newLine();
             bufferedWriter.write("Najmniejsza wypłata: " + CompanyStatistics.calculateMinSalary(company));

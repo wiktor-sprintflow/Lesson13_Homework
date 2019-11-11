@@ -6,8 +6,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        FileUtils fileUtils = new FileUtils();
-        Employee[] company = fileUtils.getEmployeesFromFile(EMPLOYEES_FILE);
-        fileUtils.setCompanyStatisticsToFile(company, COMPANY_STATISTICS_FILE);
+        Employee[] company = FileUtils.getEmployeesFromFile(EMPLOYEES_FILE);
+        FileUtils.setCompanyStatisticsToFile(company, COMPANY_STATISTICS_FILE);
     }
 }
