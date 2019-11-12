@@ -17,8 +17,9 @@ public class MathApp {
         ) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line + " = " + calculateResult(line));
-                bufferedWriter.write(line + " = " + calculateResult(line));
+                double result = calculateResult(line);
+                System.out.println(line + " = " + result);
+                bufferedWriter.write(line + " = " + result);
                 bufferedWriter.newLine();
             }
         } catch (FileNotFoundException e) {
